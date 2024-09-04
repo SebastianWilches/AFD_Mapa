@@ -16,19 +16,35 @@
         </div>
 
         <article class="encuesta_form">
+            <p>PREGUNTAS PARA LLENAR LA TABLA DE CONTROL FINANCIERO</p>
             <label>1. ¿Cuánto gana?</label>
             <select>
                 <option>Opción 1</option>
                 <option>Opción 2</option>
             </select>
-
-            <label>2. ¿Usted hace un presupuesto?</label>
+            
+            <label>2. ¿Cuánto tiene ahorrado actualmente?</label>
             <select>
                 <option>Opción 1</option>
                 <option>Opción 2</option>
             </select>
 
-            <label>3. ¿Le queda la posibilidad de guardar un porcentaje de esa suma para ahorro?</label>
+            <label>3. ¿Cuánto son sus gastos?</label>
+            <select>
+                <option>Opción 1</option>
+                <option>Opción 2</option>
+            </select>
+
+            <label>4. ¿Cual es su meta de ahorro?</label>
+            <select>
+                <option>Opción 1</option>
+                <option>Opción 2</option>
+            </select>
+            <hr>
+            <p>PREGUNTAS PARA LLENAR LA TABLA DE ENCUESTA</p>
+            
+
+            <label>2. ¿Usted hace un presupuesto?</label>
             <select>
                 <option>Opción 1</option>
                 <option>Opción 2</option>
@@ -47,30 +63,6 @@
             </select>
 
             <label>6. ¿Tiene en cuenta los gastos fijos en su presupuesto?</label>
-            <select>
-                <option>Opción 1</option>
-                <option>Opción 2</option>
-            </select>
-
-            <label>7. ¿Usa sus ahorros para pagar deudas?</label>
-            <select>
-                <option>Opción 1</option>
-                <option>Opción 2</option>
-            </select>
-
-            <label>8. ¿Ha planificado los cambios previstos en sus gastos de subsistencia?</label>
-            <select>
-                <option>Opción 1</option>
-                <option>Opción 2</option>
-            </select>
-
-            <label>9. ¿Tiene un fondo de emergencia?</label>
-            <select>
-                <option>Opción 1</option>
-                <option>Opción 2</option>
-            </select>
-
-            <label>10. ¿Ha creado un presupuesto y ha intentado seguirlo?</label>
             <select>
                 <option>Opción 1</option>
                 <option>Opción 2</option>

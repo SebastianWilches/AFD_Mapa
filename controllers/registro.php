@@ -17,16 +17,31 @@ class registro extends Controller{
 
     function POSTRegisterUser(){
         // Recibo los datos del form
-        $iduser = $_POST['iduser'];
-        $nombre    = $_POST['nombre'];
-        $apellido  = $_POST['apellido'];
-        $email  = $_POST['email'];
-        $password  = $_POST['password'];
-
+        $nombre = $_POST['nombre'];
+        $apellido = $_POST['apellido'];
+        $edad = $_POST['edad'];
+        $tipo_documento = $_POST['tipo_documento'];
+        $numero_documento = $_POST['numero_documento'];
+        $telefono = $_POST['telefono'];
+        $estado_civil = $_POST['estado_civil'];
+        $estado_laboral = $_POST['estado_laboral'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
 
         $mensaje = "";
         // Toda la info se la vamos a pasar en forma de array
-        if($this->model->POSTRegisterUser(['iduser'=> $iduser, 'nombre'=>$nombre, 'apellido'=>$apellido, 'email'=>$email, 'password'=>$password])){
+        if($this->model->POSTRegisterUser([
+            'nombre'=> $nombre, 
+            'apellido'=> $apellido, 
+            'edad'=> $edad, 
+            'tipo_documento'=> $tipo_documento, 
+            'numero_documento'=> $numero_documento, 
+            'telefono'=> $telefono, 
+            'estado_civil'=> $estado_civil, 
+            'estado_laboral'=> $estado_laboral, 
+            'email'=> $email, 
+            'password'=> $password, 
+        ])){
             $mensaje = "Usuario registrado";
         }else{
             $mensaje = "Este usuario ya existe";
