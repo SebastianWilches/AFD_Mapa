@@ -19,7 +19,7 @@ class App{
             require_once $archivoController;
             $controller = new Main();
             $controller->loadModel('main');
-            // $controller->render();
+            $controller->render();
             return false;
         }
 
@@ -28,13 +28,22 @@ class App{
         $archivoController = 'controllers/' . $url[0] . '.php';
         if(file_exists($archivoController)){
             require_once $archivoController;
+
+            // Inicializar un controlador
             $controller = new $url[0];
             $controller->loadModel($url[0]);
+
+            
 
             // Dependiendo de la segunda parte de la URL, voy a ejecutar el método asociado a ese controlador. Ej: localhost/main/saludar
             if(isset($url[1])){
                 $controller->{$url[1]}();
+            }else{
+                $controller->render();
             }
+
+
+
         }else{ //En caso de que no exista cargue el controlador de errores
             $controller = new Errores();
         }

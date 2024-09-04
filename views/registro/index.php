@@ -24,6 +24,8 @@
             <p>Usa por lo menos una letra, un número y siete carácteres</p>
             <input type='submit' class="btn_Registro" value='Registrarte'>
         </form>
+
+        <p><?php echo $this->mensaje ?></p>
         <!-- <a class="btn_Registro" href="datosPersonales">Registrarte</a> -->
     </section>
 </body>
