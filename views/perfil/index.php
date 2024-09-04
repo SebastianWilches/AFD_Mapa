@@ -21,7 +21,7 @@
             <h1>Cerrar sesión</h1>
         </a>
     </nav>
-
+<h1>TEST <p>ID de usuario: <?php echo $this->id_user; ?></p></h1>
     <div class="container_perfil">
         <section class="container_header_perfil">
             <div class="img_container">
