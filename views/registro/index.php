@@ -26,13 +26,6 @@
             <input name='estado_laboral' type="text" placeholder="Estado laboral" class="" require>
             <input name='email' type="text" placeholder="Email" class="" require>
             <input name='password' type="text" placeholder="Password" class="" require>
-            
-        
-            <!-- <input name='iduser' type="text" placeholder="ID USUARIO" class="" require>
-            <input name='nombre' type="text" placeholder="Nombre (s)" class="form_name" require>
-            <input name='apellido' type="text" placeholder="Apellido (s)" class="form_lastname" require>
-            <input name='email' type="email" placeholder="Correo electronico" class="form_completeInput" require>
-            <input name='password' type="password" placeholder="Contraseña" class="form_completeInput" require> -->
             <p>Usa por lo menos una letra, un número y siete carácteres</p>
             <input type='submit' class="btn_Registro" value='Registrarte'>
         </form>

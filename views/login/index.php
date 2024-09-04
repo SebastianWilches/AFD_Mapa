@@ -15,12 +15,16 @@
             <img src="<?php echo constant('URL'); ?>public/img/usuario.png" alt="Profile image" class="img_registro">
         </div>
         <p>Usa tu correo electronico</p>
-        <form action="" class="form_registro">
-            <input type="email" placeholder="Correo electronico" class="form_completeInput">
-            <input type="password" placeholder="Contraseña" class="form_completeInput">
+        <form action="<?php echo constant('URL'); ?>/login/POSTLoginUser" method="POST" class="form_registro">
+            <input name='email' type="text" placeholder="Correo electronico" class="form_completeInput">
+            <input name='password' type="password" placeholder="Contraseña" class="form_completeInput">
+            <div>
+                <p>Usa por lo menos una letra, un número y siete carácteres</p>
+                <input type='submit' class="btn_Registro" value='Iniciar sesión'>
+            </div>
         </form>
-        <p>Usa por lo menos una letra, un número y siete carácteres</p>
-        <a class="btn_Registro" href="<?php echo constant('URL'); ?>perfil">Iniciar sesión</a>
+        <!-- <a class="btn_Registro" href="<?php echo constant('URL'); ?>perfil">Iniciar sesión</a> -->
+        <p><?php echo $this->mensaje ?></p>
     </section>
 </body>
 

@@ -8,7 +8,6 @@ class registro extends Controller{
 
 
         $this->view->mensaje = "";
-        // Cada vez que se llame al controllador, renderice su respectiva vista
     }
 
     function render(){
