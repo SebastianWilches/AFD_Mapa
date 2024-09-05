@@ -14,9 +14,9 @@
         <a href="<?php echo constant('URL'); ?>">
             <h1>AFD</h1>
         </a>
-        <a href="<?php echo constant('URL'); ?>estadisticas">
-            <h1>Estadisticas</h1>
-        </a>
+        <a href="<?php echo constant('URL'); ?>estadisticas/getEstadisticas?id_user=<?php echo isset($_GET['id_user']) ? $_GET['id_user'] : ''; ?>">
+        <h1>Estadísticas</h1>
+    </a>
         <a href="<?php echo constant('URL'); ?>">
             <h1>Cerrar sesión</h1>
         </a>
