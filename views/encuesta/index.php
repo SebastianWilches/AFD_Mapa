@@ -15,72 +15,58 @@
             <img src="<?php echo constant('URL'); ?>public/img/encuesta.png" alt="Info image" class="img_registro">
         </div>
 
-        <article class="encuesta_form">
-            <p>PREGUNTAS PARA LLENAR LA TABLA DE CONTROL FINANCIERO</p>
-            <label>1. ¿Cuánto gana?</label>
-            <select>
-                <option>Opción 1</option>
-                <option>Opción 2</option>
-            </select>
-            
-            <label>2. ¿Cuánto tiene ahorrado actualmente?</label>
-            <select>
-                <option>Opción 1</option>
-                <option>Opción 2</option>
-            </select>
+        <form action="<?php echo constant('URL'); ?>encuesta/enviarEncuesta" method="POST">
+            <!-- PREGUNTAS PARA LLENAR LA TABLA DE CONTROL FINANCIERO -->
+            <article class="encuesta_form">
+                <p>PREGUNTAS PARA LLENAR LA TABLA DE CONTROL FINANCIERO</p>
+                <label>1. ¿Cuánto gana?</label>
+                <input type="number" name="ganancias" required>
+                
+                <label>2. ¿Cuánto tiene ahorrado actualmente?</label>
+                <input type="number" name="ahorro_actual" required>
 
-            <label>3. ¿Cuánto son sus gastos?</label>
-            <select>
-                <option>Opción 1</option>
-                <option>Opción 2</option>
-            </select>
+                <label>3. ¿Cuánto son sus gastos?</label>
+                <input type="number" name="gastos" required>
 
-            <label>4. ¿Cual es su meta de ahorro?</label>
-            <select>
-                <option>Opción 1</option>
-                <option>Opción 2</option>
-            </select>
-            <hr>
-            <p>PREGUNTAS PARA LLENAR LA TABLA DE ENCUESTA</p>
-            
+                <label>4. ¿Cuál es su meta de ahorro?</label>
+                <input type="number" name="meta" required>
 
-            <label>2. ¿Usted hace un presupuesto?</label>
-            <select>
-                <option>Opción 1</option>
-                <option>Opción 2</option>
-            </select>
+                <hr>
 
-            <label>4. ¿Tiene gastos innecesarios?</label>
-            <select>
-                <option>Opción 1</option>
-                <option>Opción 2</option>
-            </select>
+                <!-- PREGUNTAS PARA LLENAR LA TABLA DE ENCUESTA_FINANCIERA -->
+                <p>PREGUNTAS PARA LLENAR LA TABLA DE ENCUESTA FINANCIERA</p>
+                <label>1. ¿Usted hace un presupuesto?</label>
+                <select name="tiene_presupuesto">
+                    <option value="Si">Si</option>
+                    <option value="No">No</option>
+                </select>
 
-            <label>5. ¿Tiene deudas con el banco?</label>
-            <select>
-                <option>Opción 1</option>
-                <option>Opción 2</option>
-            </select>
+                <label>2. ¿Tiene gastos innecesarios?</label>
+                <select name="tiene_gastos_innecesarios">
+                    <option value="Si">Si</option>
+                    <option value="No">No</option>
+                </select>
 
-            <label>6. ¿Tiene en cuenta los gastos fijos en su presupuesto?</label>
-            <select>
-                <option>Opción 1</option>
-                <option>Opción 2</option>
-            </select>
+                <label>3. ¿Tiene deudas con el banco?</label>
+                <select name="tiene_deudas">
+                    <option value="Si">Si</option>
+                    <option value="No">No</option>
+                </select>
 
-            <label>11. Cuando hace compras grandes, ¿Cuál es su método de pago?</label>
-            <select>
-                <option>Opción 1</option>
-                <option>Opción 2</option>
-            </select>
-        </article>
+                <label>4. ¿Tiene en cuenta los gastos fijos en su presupuesto?</label>
+                <select name="tiene_gastos_fijos">
+                    <option value="Si">Si</option>
+                    <option value="No">No</option>
+                </select>
 
+                <label>5. Cuando hace compras grandes, ¿Cuál es su método de pago?</label>
+                <input type="text" name="metodo_pago" required>
+            </article>
 
-        <p class="text_alert">¡Es obligatorio completar todos los campos!</p>
-        <!-- <p class="text_info">*A continuación, deberás realizar una encuesta para que empecemos a llevar tus finanzas</p> -->
-        <a class="btn_Registro" href="<?php echo constant('URL'); ?>">Página principal</a>
+            <p class="text_alert">¡Es obligatorio completar todos los campos!</p>
+            <input type="submit" value="Enviar Encuesta" class="btn_Registro">
+        </form>
     </section>
 </body>
-
 
 </html>

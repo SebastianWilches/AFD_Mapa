@@ -1,12 +1,9 @@
-
 <?php
 
-class registro extends Controller{
+class Registro extends Controller {
 
     function __construct(){
-        parent::__construct(); //Constructor de la clase padre
-
-
+        parent::__construct();
         $this->view->mensaje = "";
     }
 
@@ -15,7 +12,6 @@ class registro extends Controller{
     }
 
     function POSTRegisterUser(){
-        // Recibo los datos del form
         $nombre = $_POST['nombre'];
         $apellido = $_POST['apellido'];
         $edad = $_POST['edad'];
@@ -27,9 +23,7 @@ class registro extends Controller{
         $email = $_POST['email'];
         $password = $_POST['password'];
 
-        $mensaje = "";
-        // Toda la info se la vamos a pasar en forma de array
-        if($this->model->POSTRegisterUser([
+        if ($id_user = $this->model->POSTRegisterUser([
             'nombre'=> $nombre, 
             'apellido'=> $apellido, 
             'edad'=> $edad, 
@@ -40,21 +34,19 @@ class registro extends Controller{
             'estado_laboral'=> $estado_laboral, 
             'email'=> $email, 
             'password'=> $password, 
-        ])){
-            $mensaje = "Usuario registrado";
-        }else{
-            $mensaje = "Este usuario ya existe";
+        ])) {
+            // Guarda el ID del usuario en la sesión
+            session_start();
+            $_SESSION['id_user'] = $id_user;
+
+            // Redirigir a /encuesta
+            header('Location: ' . constant('URL') . 'encuesta');
+            exit();
+        } else {
+            $this->view->mensaje = "Error al crear el usuario";
+            $this->render();
         }
-
-
-        // Agregamos un nuevo mensaje a nuestra vista
-        $this->view->mensaje = $mensaje;
-
-        //Si cambiamos algo en la vista tenemos que volver a renderizar
-        $this->render();
-
     }
-
 }
 
 ?>
