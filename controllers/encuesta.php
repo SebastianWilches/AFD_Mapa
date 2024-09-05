@@ -41,7 +41,7 @@ class Encuesta extends Controller{
             $this->model->insertarEncuestaFinanciera($id_control_financiero, $tiene_presupuesto, $tiene_gastos_innecesarios, $tiene_deudas, $tiene_gastos_fijos, $metodo_pago, $id_user);
 
             // Redirigir a la página principal después del éxito
-            header('Location: ' . constant('URL') . 'main');
+            header('Location: ' . constant('URL') . 'main/');
             exit(); // Asegúrate de usar exit después de header para detener la ejecución del script
         } else {
             $this->view->mensaje = "Hubo un error al procesar la encuesta.";
