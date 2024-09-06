@@ -19,16 +19,16 @@ class EncuestaModel extends Model{
             ]);
             return $this->db->connect()->lastInsertId(); // Devuelve el id_control_financiero insertado
         } catch (PDOException $e) {
+            error_log('Error al insertar en control_financiero: ' . $e->getMessage());
             return false;
         }
     }
 
     // Insertar datos en la tabla encuesta_financiera
-    public function insertarEncuestaFinanciera($id_control_financiero, $tiene_presupuesto, $tiene_gastos_innecesarios, $tiene_deudas, $tiene_gastos_fijos, $metodo_pago, $id_user) {
-        $query = $this->db->connect()->prepare("INSERT INTO encuesta_financiera (id_control_financiero, tiene_presupuesto, tiene_gastos_innecesarios, tiene_deudas, tiene_gastos_fijos, metodo_pago, id_user) VALUES (:id_control_financiero, :tiene_presupuesto, :tiene_gastos_innecesarios, :tiene_deudas, :tiene_gastos_fijos, :metodo_pago, :id_user)");
+    public function insertarEncuestaFinanciera($tiene_presupuesto, $tiene_gastos_innecesarios, $tiene_deudas, $tiene_gastos_fijos, $metodo_pago, $id_user) {
+        $query = $this->db->connect()->prepare("INSERT INTO encuesta_financiera (tiene_presupuesto, tiene_gastos_innecesarios, tiene_deudas, tiene_gastos_fijos, metodo_pago, id_user) VALUES (:tiene_presupuesto, :tiene_gastos_innecesarios, :tiene_deudas, :tiene_gastos_fijos, :metodo_pago, :id_user)");
         try {
             $query->execute([
-                'id_control_financiero' => $id_control_financiero,
                 'tiene_presupuesto' => $tiene_presupuesto,
                 'tiene_gastos_innecesarios' => $tiene_gastos_innecesarios,
                 'tiene_deudas' => $tiene_deudas,
@@ -38,9 +38,12 @@ class EncuestaModel extends Model{
             ]);
             return true;
         } catch (PDOException $e) {
+            error_log('Error al insertar en encuesta_financiera: ' . $e->getMessage());
             return false;
         }
     }
 }
+
+
 
 ?>

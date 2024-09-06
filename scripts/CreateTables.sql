@@ -26,13 +26,12 @@ CREATE TABLE control_financiero (
 
 -- Crear la tabla encuesta_financiera
 CREATE TABLE encuesta_financiera (
-    id_control_financiero INT PRIMARY KEY,
+    id_encuesta_financiera INT AUTO_INCREMENT PRIMARY KEY,
     tiene_presupuesto BOOLEAN NOT NULL,
     tiene_gastos_innecesarios BOOLEAN NOT NULL,
     tiene_deudas BOOLEAN NOT NULL,
     tiene_gastos_fijos BOOLEAN NOT NULL,
     metodo_pago VARCHAR(100),
     id_user INT,
-    FOREIGN KEY (id_control_financiero) REFERENCES control_financiero(id_control_financiero) ON DELETE CASCADE,
     FOREIGN KEY (id_user) REFERENCES users(id_user) ON DELETE CASCADE
 );
