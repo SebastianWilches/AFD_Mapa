@@ -11,9 +11,10 @@
         <a href="<?php echo constant('URL'); ?>">
             <h1>AFD</h1>
         </a>
-        <a href="<?php echo constant('URL'); ?>perfil">
-            <h1>Perfil</h1>
-        </a>
+        <a href="<?php echo constant('URL'); ?>perfil/getUserInfo?id_user=<?php echo $_SESSION['id_user'] ?? ''; ?>">
+    <h1>Perfil</h1>
+</a>
+
         <a href="<?php echo constant('URL'); ?>">
             <h1>Cerrar sesión</h1>
         </a>
@@ -36,7 +37,13 @@
         </article>
         <article class="card_stats">
             <p class="card_title">Falta dinero para tu meta</p>
-            <p class="card_value">$<?php echo isset($this->estadisticas['meta']) ? number_format($this->estadisticas['meta']) : '0'; ?></p>
+            <?php
+                // Calculamos cuánto falta para alcanzar la meta
+                $falta_dinero = isset($this->estadisticas['meta']) && isset($this->estadisticas['ahorro_actual']) 
+                                ? max(0, $this->estadisticas['meta'] - $this->estadisticas['ahorro_actual']) 
+                                : 0;
+            ?>
+            <p class="card_value">$<?php echo number_format($falta_dinero); ?></p>
         </article>
     </section>
     

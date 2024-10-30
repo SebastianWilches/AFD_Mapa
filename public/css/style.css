@@ -26,6 +26,16 @@ a {
     text-decoration: none;
 }
 
+.container-delete-profile{
+    background-color: red;
+    display: flex;
+    justify-content: center;
+}
+.delete-profile{
+    display: flex;
+    justify-content: center;
+}
+
 
 /* Navbar */
 .navBar_Inicio {
@@ -310,3 +320,4 @@ p {
     padding-top: 50px;
     margin: 0;
 }
+

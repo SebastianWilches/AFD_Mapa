@@ -7,10 +7,12 @@ class Estadisticas extends Controller{
     }
 
     function getEstadisticas(){
+        // session_start();
         // Obtener el id_user de la URL
-        $id_user = $_GET['id_user'] ?? null;
+        $id_user = $_GET['id_user'] ?? $_SESSION['id_user'] ?? null;
 
         if ($id_user) {
+            $_SESSION['id_user'] = $id_user;
             // Llamar al modelo para obtener las estadísticas del usuario
             $estadisticas = $this->model->getEstadisticas($id_user);
             if ($estadisticas) {

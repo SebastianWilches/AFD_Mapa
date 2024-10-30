@@ -67,6 +67,54 @@ class PerfilModel extends Model{
             return false;
         }
     }
+
+    // Nueva funcion para borrar el perfil
+    public function deleteUser($id_user) {
+        // Obtener la conexión a la base de datos
+        $conn = $this->db->connect();
+        
+        // Comenzar la transacción
+        $conn->beginTransaction();
+    
+        try {
+            // Eliminar registros de control_financiero
+            $query1 = $conn->prepare(
+                '
+                DELETE FROM control_financiero 
+                WHERE id_user = :id_user;
+                '
+            );
+            $query1->execute(['id_user' => $id_user]);
+    
+            // Eliminar registros de encuesta_financiera
+            $query2 = $conn->prepare(
+                '
+                DELETE FROM encuesta_financiera 
+                WHERE id_user = :id_user;
+                '
+            );
+            $query2->execute(['id_user' => $id_user]);
+    
+            // Finalmente, eliminar el usuario de la tabla users
+            $query3 = $conn->prepare(
+                '
+                DELETE FROM users 
+                WHERE id_user = :id_user;
+                '
+            );
+            $query3->execute(['id_user' => $id_user]);
+    
+            // Si todas las eliminaciones fueron exitosas, confirmar la transacción
+            $conn->commit();
+            return true;
+    
+        } catch (PDOException $e) {
+            // Si ocurre un error, deshacer la transacción
+            $conn->rollBack();
+            // En caso de error, podrías manejarlo de manera específica o retornar false
+            return false;
+        }
+    }
 }
 
 ?>

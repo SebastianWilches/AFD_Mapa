@@ -14,10 +14,12 @@ class Perfil extends Controller{
     }
 
     function getUserInfo(){
+        // session_start();
         // Recibo el id_user de la URL o de la sesión
-        $id_user = $_GET['id_user'] ?? null;
+        $id_user = $_GET['id_user'] ?? $_SESSION['id_user'] ?? null;
 
         if ($id_user) {
+            $_SESSION['id_user'] = $id_user;
             // Obtengo la información del usuario desde el modelo
             $result = $this->model->getUserInfo(['id_user' => $id_user]);
             
@@ -56,6 +58,33 @@ class Perfil extends Controller{
             
             // Renderizar la vista con el mensaje de error
             $this->render();
+        }
+    }
+
+    // Nueva funcionn para borrar el usuario
+    function deleteUser() {
+        // session_start();
+        // Obtén el id_user de la sesión
+        $id_user = $_SESSION['id_user'] ?? null;
+    
+        if ($id_user) {
+            // Llama al modelo para eliminar el usuario
+            if ($this->model->deleteUser($id_user)) {
+                // Destruye la sesión para cerrar la sesión del usuario
+                session_destroy();
+    
+                // Redirige a la página de inicio
+                header('Location: ' . constant('URL'));
+                exit();
+            } else {
+                // Muestra un mensaje de error si la eliminación falla
+                $this->view->mensaje = "Error al eliminar el usuario.";
+                $this->render();
+            }
+        } else {
+            // Si no hay id_user en la sesión, redirige a la página de inicio
+            header('Location: ' . constant('URL'));
+            exit();
         }
     }
 }

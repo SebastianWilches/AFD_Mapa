@@ -14,9 +14,9 @@
         <a href="<?php echo constant('URL'); ?>">
             <h1>AFD</h1>
         </a>
-        <a href="<?php echo constant('URL'); ?>estadisticas/getEstadisticas?id_user=<?php echo isset($_GET['id_user']) ? $_GET['id_user'] : ''; ?>">
-        <h1>Estadísticas</h1>
-    </a>
+        <a href="<?php echo constant('URL'); ?>estadisticas/getEstadisticas?id_user=<?php echo $_SESSION['id_user']; ?>">
+            <h1>Estadísticas</h1>
+        </a>
         <a href="<?php echo constant('URL'); ?>">
             <h1>Cerrar sesión</h1>
         </a>
@@ -44,10 +44,11 @@
             </div>
         </section>
 
+        <form action="" method="POST">
+            <!-- Información del perfil -->
         <section class="form-perfil">
-            <form action="" method="POST">
-                <!-- Información del perfil -->
-                <div class="item_perfil">
+            <div>
+            <div class="item_perfil">
                     <label>Nombre(s)</label>
                     <input value="<?php echo isset($this->userInfo['nombre']) ? htmlspecialchars($this->userInfo['nombre']) : ''; ?>" disabled type="text">
                 </div>
@@ -61,8 +62,9 @@
                     <label>Edad</label>
                     <input value="<?php echo isset($this->userInfo['edad']) ? htmlspecialchars($this->userInfo['edad']) : ''; ?>" disabled type="text">
                 </div>
-
-                <div class="item_perfil">
+            </div>
+            <div>
+            <div class="item_perfil">
                     <label>Tipo de documento</label>
                     <input value="<?php echo isset($this->userInfo['tipo_documento']) ? htmlspecialchars($this->userInfo['tipo_documento']) : ''; ?>" disabled type="text">
                 </div>
@@ -76,8 +78,9 @@
                     <label>Teléfono</label>
                     <input value="<?php echo isset($this->userInfo['telefono']) ? htmlspecialchars($this->userInfo['telefono']) : ''; ?>" disabled type="text">
                 </div>
-
-                <div class="item_perfil">
+            </div>
+            <div>
+            <div class="item_perfil">
                     <label>Estado civil</label>
                     <input value="<?php echo isset($this->userInfo['estado_civil']) ? htmlspecialchars($this->userInfo['estado_civil']) : ''; ?>" disabled type="text">
                 </div>
@@ -86,8 +89,19 @@
                     <label>Estado laboral</label>
                     <input value="<?php echo isset($this->userInfo['estado_laboral']) ? htmlspecialchars($this->userInfo['estado_laboral']) : ''; ?>" disabled type="text">
                 </div>
-            </form>
-        </section>
+            </div>
+                 
+            </section>
+        </form>
+
+        <form action="<?php echo constant('URL'); ?>perfil/deleteUser" method="POST">
+        <section class="container-delete-profile">
+                <input type="hidden" name="id_user" value="<?php echo $_SESSION['id_user'] ?? ''; ?>">
+                <button class="delete-profile" type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar tu perfil? Esta acción es irreversible.');">
+                    Eliminar perfil
+                </button>
+            </section>
+        </form>
     </div>
 
     <!-- Mostrar mensaje si existe -->

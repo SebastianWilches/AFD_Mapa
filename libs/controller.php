@@ -3,6 +3,7 @@
 class Controller{
 
     function __construct(){
+        session_start();
         //Cada vez que se llame un controlador, cree su respectiva vista
         $this->view = new View();
     }
